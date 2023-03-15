@@ -1,0 +1,15 @@
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\bin\Debug\net6.0\NCKH.Blockchain.Team4.BL.deps.json
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\bin\Debug\net6.0\NCKH.Blockchain.Team4.BL.dll
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\bin\Debug\net6.0\NCKH.Blockchain.Team4.BL.pdb
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\bin\Debug\net6.0\NCKH.Blockchain.Team4.Common.dll
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\bin\Debug\net6.0\NCKH.Blockchain.Team4.Common.pdb
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\obj\Debug\net6.0\NCKH.Blockchain.Team4.BL.csproj.AssemblyReference.cache
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\obj\Debug\net6.0\NCKH.Blockchain.Team4.BL.GeneratedMSBuildEditorConfig.editorconfig
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\obj\Debug\net6.0\NCKH.Blockchain.Team4.BL.AssemblyInfoInputs.cache
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\obj\Debug\net6.0\NCKH.Blockchain.Team4.BL.AssemblyInfo.cs
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\obj\Debug\net6.0\NCKH.Blockchain.Team4.BL.csproj.CoreCompileInputs.cache
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\obj\Debug\net6.0\NCKH.Blockchain.Team4.BL.csproj.CopyComplete
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\obj\Debug\net6.0\NCKH.Blockchain.Team4.BL.dll
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\obj\Debug\net6.0\refint\NCKH.Blockchain.Team4.BL.dll
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\obj\Debug\net6.0\NCKH.Blockchain.Team4.BL.pdb
+D:\UTC di hoc\NCKH\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.BL\obj\Debug\net6.0\ref\NCKH.Blockchain.Team4.BL.dll
