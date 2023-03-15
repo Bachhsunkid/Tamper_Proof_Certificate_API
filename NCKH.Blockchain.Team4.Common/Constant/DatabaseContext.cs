@@ -12,11 +12,21 @@ namespace NCKH.Blockchain.Team4.Common.Constant
 
         public static string DASHBROAD_INFOR = "proc_dashbroad_GetInfor";
 
+        public static string CONTACT_GETALL = "Proc_Contact_GetAll";
+
         public static string CONTACT_GET_PAGING_AND_FILLTER = "proc_contact_GetPaging";
 
         public static string CONTACT_DELETE = "Proc_contact_Delete";
 
         public static string CONTACT_ACCEPT = "Proc_contact_accept";
+
+        public static string CERTIFICATE_GETALL_ISSUED = "proc_certificate_GetAllIssued";
+
+        public static string CERTIFICATE_GETALL_RECEIVED = "proc_certificate_GetAllReceived";
+
+        public static string CERTIFICATE_SIGN_MULTIPLE = "proc_certificate_SignMultiple";
+
+        public static string CERTIFICATE_SEND_MULTIPLE = "proc_certificate_SendMultiple";
 
         public static string CERTIFICATE_ISSUED_GET_PAGING_AND_FILLTER = "proc_certificate_GetPagingIssued";
 

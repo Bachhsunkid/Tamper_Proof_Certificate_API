@@ -15,7 +15,11 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
 
         public string CertificateType { get; set; }
 
-        public string OrganizationName { get; set; }
+        public string OganizationName { get; set; }
+
+        public string ReceivedName { get; set; }
+
+        public DateTime ReceivedDoB { get; set; }
 
         public int YearOfGraduation { get; set; }
 

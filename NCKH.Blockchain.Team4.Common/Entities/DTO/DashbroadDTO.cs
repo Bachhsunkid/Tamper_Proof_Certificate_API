@@ -10,6 +10,7 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
     {
         public int Pending { get; set; }
         public int Connected { get; set; }
+        public int Total { get; set; }
         public int Draft { get; set; }
         public int Signed { get; set; }
         public int Sent { get; set; }
@@ -19,6 +20,7 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
         {
             Pending = pending;
             Connected = connected;
+            Total = pending + connected;
             Draft = draft;
             Signed = signed;
             Sent = sent;

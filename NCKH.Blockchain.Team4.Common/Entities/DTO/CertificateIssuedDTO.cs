@@ -11,6 +11,18 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
     {
         public Guid CertificateID { get; set; }
 
+        public string CertificateName { get; set; }
+
+        public DateTime ReceivedDoB { get; set; }
+
+        public int YearOfGraduation { get; set; }
+
+        public string Classification { get; set; }
+
+        public string IpfsLink { get; set; }
+
+        public string ReceivedAddressWallet { get; set; }
+
         public int CertificateCode { get; set; }
 
         public string CertificateType { get; set; }
