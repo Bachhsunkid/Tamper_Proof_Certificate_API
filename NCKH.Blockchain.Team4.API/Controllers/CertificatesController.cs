@@ -183,7 +183,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                     return StatusCode(StatusCodes.Status200OK, certificateIDs);
                 }
 
-                return StatusCode(StatusCodes.Status403Forbidden);
+                return StatusCode(StatusCodes.Status404NotFound);
             }
             //Try catch Exception
             catch (Exception ex)
@@ -259,7 +259,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                     return StatusCode(StatusCodes.Status200OK, certificateIDs);
                 }
 
-                return StatusCode(StatusCodes.Status403Forbidden);
+                return StatusCode(StatusCodes.Status404NotFound);
             }
             //Try catch Exception
             catch (Exception ex)
@@ -275,7 +275,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
         /// <param name="certificateID"></param>
         /// <returns></returns>
         [HttpDelete]
-        public IActionResult DeleteCertificate(Guid certificateID)
+        public IActionResult DeleteCertificate([FromBody] Guid certificateID)
         {
             try
             {

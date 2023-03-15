@@ -49,7 +49,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
         /// <param name="contactID"></param>
         /// <returns></returns>
         [HttpPost("accept")]
-        public IActionResult AcceptContact(Guid contactID)
+        public IActionResult AcceptContact([FromBody] Guid contactID)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
         /// <param name="contactID"></param>
         /// <returns></returns>
         [HttpDelete]
-        public IActionResult DeleteContact(Guid contactID)
+        public IActionResult DeleteContact([FromBody] Guid contactID)
         {
             try
             {
