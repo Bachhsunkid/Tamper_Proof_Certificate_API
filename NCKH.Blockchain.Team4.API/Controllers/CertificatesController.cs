@@ -348,29 +348,29 @@ namespace NCKH.Blockchain.Team4.API.Controllers
             }
         }
 
-        [HttpPost("AddTransactionLink")]
-        public IActionResult AddTransactionLinkCertificates([FromBody] List<string> certificateIDs, List<string> hashes)
+        [HttpPost("add-transaction-link")]
+        public IActionResult AddTransactionLinkCertificates([FromBody] TransactionLink transactionLink)
         {
             try
             {
                 int countCertEffected = 0;
-                for (int i = 0; i < certificateIDs.Count; i++)
+                for (int i = 0; i < transactionLink.certificateIDs.Count; i++)
                 {
                     var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
 
                     string storedProcedureName = DatabaseContext.CERTIFICATE_ADD_TRANSACTIONLINK;
 
                     var parameters = new DynamicParameters();
-                    parameters.Add("v_CertificateID", certificateIDs[i]);
-                    parameters.Add("v_TransactionLink", hashes[i]);
+                    parameters.Add("v_CertificateID", transactionLink.certificateIDs[i]);
+                    parameters.Add("v_TransactionLink", transactionLink.hashes[i]);
 
                     mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
 
                     countCertEffected++;
                 }
-                if (countCertEffected == certificateIDs.Count && countCertEffected == hashes.Count)
+                if (countCertEffected == transactionLink.certificateIDs.Count && countCertEffected == transactionLink.hashes.Count)
                 {
-                    return StatusCode(StatusCodes.Status200OK, certificateIDs);
+                    return StatusCode(StatusCodes.Status200OK, transactionLink.certificateIDs);
                 }
 
                 return StatusCode(StatusCodes.Status404NotFound);
@@ -381,7 +381,6 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 Console.Write(e.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
-
         }
     }
 }
