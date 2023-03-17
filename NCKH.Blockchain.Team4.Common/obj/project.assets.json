@@ -586,11 +586,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\UTC di hoc\\NCKH\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj",
+      "projectUniqueName": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj",
       "projectName": "NCKH.Blockchain.Team4.Common",
-      "projectPath": "D:\\UTC di hoc\\NCKH\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj",
+      "projectPath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\UTC di hoc\\NCKH\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\obj\\",
+      "outputPath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",

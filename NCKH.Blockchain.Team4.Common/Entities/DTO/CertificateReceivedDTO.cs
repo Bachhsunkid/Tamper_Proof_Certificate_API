@@ -11,15 +11,19 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
     {
         public Guid CertificateID { get; set; }
 
-        public int CertificateCode { get; set; }
+        public string ImageLink { get; set; }
 
-        public string CertificateType { get; set; }
+        public string TransactionsLink { get; set; }
+
+        public int CertificateCode { get; set; }
 
         public string OganizationName { get; set; }
 
         public string ReceivedName { get; set; }
 
         public DateTime ReceivedDoB { get; set; }
+
+        public string CertificateName { get; set; }
 
         public int YearOfGraduation { get; set; }
 

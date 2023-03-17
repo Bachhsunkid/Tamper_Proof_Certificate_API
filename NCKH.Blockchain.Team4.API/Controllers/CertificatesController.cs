@@ -103,6 +103,9 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 var oganizationName = DataFromDB.GetOganizationNamebyPolicyID(file.PolicyID);
                 drawCertificate.Draw(certs, oganizationName);
 
+                //Up ảnh bằng lên https://cloudinary.com/ và gán đường dẫn vào certificate.imagelink
+                //........
+
                 //Upload to IPFS
                 pinataClientAPI.UploadImagesToIPFS(drawCertificate.ImageFolderPath);
 
@@ -343,6 +346,42 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 Console.WriteLine(ex.Message);
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
+        }
+
+        [HttpPost("AddTransactionLink")]
+        public IActionResult AddTransactionLinkCertificates([FromBody] List<string> certificateIDs, List<string> hashes)
+        {
+            try
+            {
+                int countCertEffected = 0;
+                for (int i = 0; i < certificateIDs.Count; i++)
+                {
+                    var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
+
+                    string storedProcedureName = DatabaseContext.CERTIFICATE_ADD_TRANSACTIONLINK;
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("v_CertificateID", certificateIDs[i]);
+                    parameters.Add("v_TransactionLink", hashes[i]);
+
+                    mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+
+                    countCertEffected++;
+                }
+                if (countCertEffected == certificateIDs.Count && countCertEffected == hashes.Count)
+                {
+                    return StatusCode(StatusCodes.Status200OK, certificateIDs);
+                }
+
+                return StatusCode(StatusCodes.Status404NotFound);
+
+            }
+            catch(Exception e)
+            {
+                Console.Write(e.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+
         }
     }
 }

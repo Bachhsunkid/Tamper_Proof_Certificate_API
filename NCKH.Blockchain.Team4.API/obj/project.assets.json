@@ -1262,11 +1262,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\UTC di hoc\\NCKH\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.API\\NCKH.Blockchain.Team4.API.csproj",
+      "projectUniqueName": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.API\\NCKH.Blockchain.Team4.API.csproj",
       "projectName": "NCKH.Blockchain.Team4.API",
-      "projectPath": "D:\\UTC di hoc\\NCKH\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.API\\NCKH.Blockchain.Team4.API.csproj",
+      "projectPath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.API\\NCKH.Blockchain.Team4.API.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\UTC di hoc\\NCKH\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.API\\obj\\",
+      "outputPath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1283,11 +1283,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\UTC di hoc\\NCKH\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.BL\\NCKH.Blockchain.Team4.BL.csproj": {
-              "projectPath": "D:\\UTC di hoc\\NCKH\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.BL\\NCKH.Blockchain.Team4.BL.csproj"
+            "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.BL\\NCKH.Blockchain.Team4.BL.csproj": {
+              "projectPath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.BL\\NCKH.Blockchain.Team4.BL.csproj"
             },
-            "D:\\UTC di hoc\\NCKH\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj": {
-              "projectPath": "D:\\UTC di hoc\\NCKH\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj"
+            "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj": {
+              "projectPath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj"
             }
           }
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "27g6JpLxtmQ4KiV5Ffbp7PzEF0DakK7NNkk+cl7ihP9E70NMJRTs1s/K4ppfjM1O58BD5FKBi8vwB4LG0EanxA==",
+  "dgSpecHash": "Ztyam2f6/2pIUUwneJ3lipf6dW/m7eCxULpZzzXQoY8gJvov+4keGWKjAe5JVL412ZKmkNEGqz9jsy2a7uLxPQ==",
   "success": true,
-  "projectFilePath": "D:\\UTC di hoc\\NCKH\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.API\\NCKH.Blockchain.Team4.API.csproj",
+  "projectFilePath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.API\\NCKH.Blockchain.Team4.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\flurl\\3.0.0\\flurl.3.0.0.nupkg.sha512",

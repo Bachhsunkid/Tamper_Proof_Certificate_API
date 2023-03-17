@@ -79,7 +79,13 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 var parameters = new DynamicParameters();
                 var props = user.GetType().GetProperties();
 
-                foreach(var prop in props)
+                //Upload logo to  https://cloudinary.com/
+                //.......
+
+                //Set logo = link from https://cloudinary.com/
+                //......
+
+                foreach (var prop in props)
                 {
                     var value = prop.GetValue(user);
                     parameters.Add($"@v_{prop.Name}", value);

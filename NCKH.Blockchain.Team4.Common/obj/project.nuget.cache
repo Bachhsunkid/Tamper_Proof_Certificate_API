@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UtmvuguQRd5g3ZzBHg7FTaK5goZN+uaJQRI4HUMzjvfpsaneg4wlLTyy0HHo5L2SHCpMSbxVu4hCapk+FGix4g==",
+  "dgSpecHash": "SfGXm4nloOINEoNUQ4zxpmCIhaHvLLRymyyjoQAVYvYRWNbFBkM7omNm/uWjsBZcbmzqQhPNbIWpJbLNOD6KbA==",
   "success": true,
-  "projectFilePath": "D:\\UTC di hoc\\NCKH\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj",
+  "projectFilePath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",

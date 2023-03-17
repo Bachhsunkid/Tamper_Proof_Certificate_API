@@ -3,9 +3,9 @@ SET GLOBAL max_connections = 1024;
 
 GRANT ALL PRIVILEGES ON * TO another_user@'sql12.freesqldatabase.com';
 -- DELETE FROM user WHERE UserCode = 100005;
--- DELETE FROM user; 
--- DELETE FROM certificate;
--- DELETE FROM contact;
+ DELETE FROM user; 
+ DELETE FROM certificate;
+ DELETE FROM contact;
 
 SELECT * FROM user u;
 SELECT * FROM certificate c;
@@ -85,3 +85,17 @@ CALL proc_Certificate_GetAllReceived('bf1f5570841b4ee812dc49e6111ba402813d19b3e1
 CALL Proc_Contact_GetAll('146d28b014f87920fa81c3b91007606d03ce0376c365befb5a3df1f7');
 
 CALL Proc_Contact_GetAll('bf1f5570841b4ee812dc49e6111ba402813d19b3e1f8ec1e94ca9e28');
+
+CALL proc_contact_accept('c8d48f5e-c356-11ed-ae9e-062bff1cb1bf'); 
+
+CALL proc_certificate_sign('c54c7fd0-c31a-11ed-ae9e-062bff1cb1bf');
+
+CALL proc_certificate_send('c8d422a0-c356-11ed-ae9e-062bff1cb1bf');
+
+CALL proc_dashbroad_GetInfor('75e1242772997291ca75aac0755b1a164dad61a4cd035e72c1485172', @v_Pending, @v_Connected, @v_Draft, @v_Signed, @v_Sent,@v_Received);
+SELECT @v_Pending, @v_Connected, @v_Draft, @v_Signed, @v_Sent, @v_Received;
+
+CALL proc_dashbroad_GetInfor('bf1f5570841b4ee812dc49e6111ba402813d19b3e1f8ec1e94ca9e28', @v_Pending, @v_Connected, @v_Draft, @v_Signed, @v_Sent,@v_Received);
+SELECT @v_Pending, @v_Connected, @v_Draft, @v_Signed, @v_Sent, @v_Received;
+
+

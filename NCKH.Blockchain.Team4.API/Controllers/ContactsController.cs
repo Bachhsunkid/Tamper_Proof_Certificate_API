@@ -93,7 +93,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
 
                 //Chuẩn bị câu lệnh sql 
-                string storedProcedureName = DatabaseContext.CERTIFICATE_DELETE;
+                string storedProcedureName = DatabaseContext.CONTACT_DELETE;
 
                 //Chuẩn bị tham số đầu vào
                 var parameters = new DynamicParameters();
