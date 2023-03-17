@@ -92,3 +92,4 @@ D:\UTC di hoc\NCKH\Project\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.API\obj\D
 D:\UTC di hoc\NCKH\Project\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.API\obj\Debug\net6.0\NCKH.Blockchain.Team4.API.pdb
 D:\UTC di hoc\NCKH\Project\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.API\obj\Debug\net6.0\NCKH.Blockchain.Team4.API.genruntimeconfig.cache
 D:\UTC di hoc\NCKH\Project\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.API\obj\Debug\net6.0\ref\NCKH.Blockchain.Team4.API.dll
+D:\UTC di hoc\NCKH\Project\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.API\bin\Debug\net6.0\CloudinaryDotNet.dll

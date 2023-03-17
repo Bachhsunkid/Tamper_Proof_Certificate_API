@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
     {
         public string UserName { get; set; }
 
-        public string Logo { get; set; }
+        public IFormFile Logo { get; set; }
+
+        public string AddresWallet { get; set; }
     }
 }

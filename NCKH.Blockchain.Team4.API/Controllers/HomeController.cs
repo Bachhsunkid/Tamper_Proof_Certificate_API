@@ -1,10 +1,15 @@
-﻿using Dapper;
+﻿using CloudinaryDotNet.Actions;
+using CloudinaryDotNet;
+using Dapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
 using NCKH.Blockchain.Team4.Common.Constant;
 using NCKH.Blockchain.Team4.Common.Entities.DTO;
 using System.Data;
+using NCKH.Blockchain.Team4.API.Library;
+using NCKH.Blockchain.Team4.Common.Entities;
+using System.Runtime.ConstrainedExecution;
 
 namespace NCKH.Blockchain.Team4.API.Controllers
 {
@@ -12,13 +17,22 @@ namespace NCKH.Blockchain.Team4.API.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
+
+        private readonly CloudinaryService _cloudinaryService;
+
+        public HomeController(CloudinaryService cloudinaryService)
+        {
+            _cloudinaryService = cloudinaryService;
+        }
+
+
         /// <summary>
         /// Lấy thông số dashbroad theo PolicyID
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
         [HttpPost]
-        public IActionResult GetDashbroadInfor([FromBody]string userId)
+        public IActionResult GetDashbroadInfor([FromBody] string userId)
         {
             try
             {
@@ -60,43 +74,62 @@ namespace NCKH.Blockchain.Team4.API.Controllers
             }
         }
 
+        [HttpPost("get-userid-by-addresswallet")]
+        public IActionResult GetUserIDbyAddressWallet([FromBody] string addressWallet)
+        {
+
+            try
+            {
+                var user = DataFromDB.GetUserIDbyAddressWallet(addressWallet);
+
+                if (user != Guid.Empty)
+                {
+                    return StatusCode(StatusCodes.Status200OK, user);
+                }
+                return StatusCode(StatusCodes.Status400BadRequest);
+            }
+            catch(Exception e) 
+            {
+                Console.WriteLine(e.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+
+
+        }
+
         /// <summary>
         /// Thêm mới 1 user
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
         [HttpPost("add-user")]
-        public IActionResult CreateUser([FromBody] UserDTO user)
+        public async Task<IActionResult> CreateUser([FromForm] UserDTO user)
         {
             try
             {
-                //Khởi tạo kết nối đến DB
+                var imageUrl = await _cloudinaryService.UploadImageFromIFormFile(user.Logo);
+
                 var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
 
-                //Chuẩn bị câu lệnh sql
                 string storedProcedureName = DatabaseContext.USER_INSERT;
 
-                var parameters = new DynamicParameters();
-                var props = user.GetType().GetProperties();
+                //var newUser = new User()
+                //{
+                //    UserName = user.UserName,
+                //    Logo = imageUrl,
+                //    AddressWallet = user.AddresWallet
+                //};
 
-                //Upload logo to  https://cloudinary.com/
-                //.......
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("v_UserName", user.UserName);
+                parameters.Add("v_Logo", imageUrl);
+                parameters.Add("v_AddressWallet", user.AddresWallet);
 
-                //Set logo = link from https://cloudinary.com/
-                //......
+                mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
 
-                foreach (var prop in props)
+                if (imageUrl != null)
                 {
-                    var value = prop.GetValue(user);
-                    parameters.Add($"@v_{prop.Name}", value);
-                }
-
-                //Thực hiện gọi vào DB
-                int numberRowsAffected = mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
-
-                if (numberRowsAffected > 0)
-                {
-                    return StatusCode(StatusCodes.Status201Created, user);
+                    return StatusCode(StatusCodes.Status201Created, user.AddresWallet);
                 }
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
@@ -106,5 +139,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
+
+        
     }
 }

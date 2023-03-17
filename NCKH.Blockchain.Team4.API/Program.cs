@@ -7,6 +7,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<CloudinaryService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,6 +21,8 @@ if (app.Environment.IsDevelopment())
 //Use API at localhost - Resovle CORS
 app.UseCors(c => c.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
 builder.Services.AddCors();
+
+app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();
 
