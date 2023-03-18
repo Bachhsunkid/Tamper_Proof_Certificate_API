@@ -6,12 +6,12 @@ namespace NCKH.Blockchain.Team4.API.Library
 {
     public class DrawCertificate
     {
-
+        CloudinaryService cloudinaryService = new CloudinaryService();
         public string ImageFolderPath { get; set; }
 
         public string BackgroundImagePath { get; set; }
 
-        public void Draw(List<CertificateDTO> certs, string oganizationName)
+        public async Task Draw(List<CertificateDTO> certs, string oganizationName)
         {
             var code = DataFromDB.GetMaxCertificateCode() - certs.Count;
 
@@ -68,12 +68,8 @@ namespace NCKH.Blockchain.Team4.API.Library
                     Directory.CreateDirectory(ImageFolderPath);
                     image.Save(imagePath);
 
+                    string imageLink = await cloudinaryService.UploadImageFromFolder(imagePath);
 
-                    //Upload to https://cloudinary.com/
-                    var cloudinaryService = new CloudinaryService();
-                    var imageLink = cloudinaryService.UploadImageFromFolder(imagePath).ToString();
-
-                    //insert imagelink to database
                     DataFromDB.UpdateImageLinkCertificate(code, imageLink);
 
                     code++;

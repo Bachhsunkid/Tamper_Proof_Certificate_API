@@ -25,6 +25,36 @@ namespace NCKH.Blockchain.Team4.API.Controllers
             _cloudinaryService = cloudinaryService;
         }
 
+        [HttpPost("add-user")]
+        public async Task<IActionResult> CreateUser([FromForm] UserDTO user)
+        {
+            try
+            {
+                var imageUrl = await _cloudinaryService.UploadImageFromIFormFile(user.Logo);
+
+                var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
+
+                string storedProcedureName = DatabaseContext.USER_INSERT;
+
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("v_UserID", user.UserID);
+                parameters.Add("v_UserName", user.UserName);
+                parameters.Add("v_Logo", imageUrl);
+
+                mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+
+                if (imageUrl != null)
+                {
+                    return StatusCode(StatusCodes.Status201Created);
+                }
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
 
         /// <summary>
         /// Lấy thông số dashbroad theo PolicyID
@@ -41,7 +71,8 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 string storedProcedureName = DatabaseContext.DASHBROAD_INFOR;
 
                 var parameters = new DynamicParameters();
-                parameters.Add("v_UserID", userId, DbType.String, ParameterDirection.Input);
+                parameters.Add("v_UserID", userId, DbType.String, direction: ParameterDirection.Input);
+                parameters.Add("v_Username", dbType: DbType.String, direction: ParameterDirection.Output);
                 parameters.Add("v_Pending", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("v_Connected", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("v_Draft", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -51,6 +82,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
 
                 mySqlConnection.Execute("proc_dashbroad_GetInfor", parameters, commandType: CommandType.StoredProcedure);
 
+                string username = parameters.Get<string>("v_Username");
                 int pending = parameters.Get<int>("v_Pending");
                 int connected = parameters.Get<int>("v_Connected");
                 int draft = parameters.Get<int>("v_Draft");
@@ -58,14 +90,15 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 int sent = parameters.Get<int>("v_Sent");
                 int receiveed = parameters.Get<int>("v_Received");
 
-                var dashbroadDTO = new DashbroadDTO(pending, connected, draft, signed, sent, receiveed);
+                var dashbroadDTO = new DashbroadDTO(username, pending, connected, draft, signed, sent, receiveed);
 
-                if (dashbroadDTO != null)
+                if (username == null)
                 {
-                    return StatusCode(StatusCodes.Status200OK, dashbroadDTO);
+                    return StatusCode(StatusCodes.Status404NotFound, "Account doesn't exist !!!");
+                    
                 }
-                return StatusCode(StatusCodes.Status500InternalServerError);
-
+                return StatusCode(StatusCodes.Status200OK, dashbroadDTO);
+               
             }
             catch (Exception e)
             {
@@ -74,72 +107,32 @@ namespace NCKH.Blockchain.Team4.API.Controllers
             }
         }
 
-        [HttpPost("get-userid-by-addresswallet")]
-        public IActionResult GetUserIDbyAddressWallet([FromBody] string addressWallet)
-        {
 
-            try
-            {
-                var user = DataFromDB.GetUserIDbyAddressWallet(addressWallet);
+        //[HttpPost("get-userid-by-addresswallet")]
+        //public IActionResult GetUserIDbyAddressWallet([FromBody] string addressWallet)
+        //{
 
-                if (user != Guid.Empty)
-                {
-                    return StatusCode(StatusCodes.Status200OK, user);
-                }
-                return StatusCode(StatusCodes.Status400BadRequest);
-            }
-            catch(Exception e) 
-            {
-                Console.WriteLine(e.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
+        //    try
+        //    {
+        //        var user = DataFromDB.GetUserIDbyAddressWallet(addressWallet);
 
-
-        }
+        //        if (user != Guid.Empty)
+        //        {
+        //            return StatusCode(StatusCodes.Status200OK, user);
+        //        }
+        //        return StatusCode(StatusCodes.Status400BadRequest);
+        //    }
+        //    catch(Exception e) 
+        //    {
+        //        Console.WriteLine(e.Message);
+        //        return StatusCode(StatusCodes.Status500InternalServerError);
+        //    }
+        //}
 
         /// <summary>
         /// Thêm mới 1 user
         /// </summary>
         /// <param name="user"></param>
         /// <returns></returns>
-        [HttpPost("add-user")]
-        public async Task<IActionResult> CreateUser([FromForm] UserDTO user)
-        {
-            try
-            {
-                var imageUrl = await _cloudinaryService.UploadImageFromIFormFile(user.Logo);
-
-                var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
-
-                string storedProcedureName = DatabaseContext.USER_INSERT;
-
-                //var newUser = new User()
-                //{
-                //    UserName = user.UserName,
-                //    Logo = imageUrl,
-                //    AddressWallet = user.AddresWallet
-                //};
-
-                DynamicParameters parameters = new DynamicParameters();
-                parameters.Add("v_UserName", user.UserName);
-                parameters.Add("v_Logo", imageUrl);
-                parameters.Add("v_AddressWallet", user.AddresWallet);
-
-                mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
-
-                if (imageUrl != null)
-                {
-                    return StatusCode(StatusCodes.Status201Created, user.AddresWallet);
-                }
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return StatusCode(StatusCodes.Status500InternalServerError);
-            }
-        }
-
-        
     }
 }

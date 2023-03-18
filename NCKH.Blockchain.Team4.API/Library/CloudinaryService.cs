@@ -48,11 +48,9 @@ public class CloudinaryService
     {
         try
         {
-            using var stream = new FileStream(filePath, FileMode.Open);
-
             var uploadParams = new ImageUploadParams
             {
-                File = new FileDescription(Path.GetFileName(filePath), stream),
+                File = new FileDescription(filePath),
                 PublicId = Guid.NewGuid().ToString(), // generate a unique ID for the image
                 Folder = "Degree" // optional: specify a folder in Cloudinary to store the image
             };

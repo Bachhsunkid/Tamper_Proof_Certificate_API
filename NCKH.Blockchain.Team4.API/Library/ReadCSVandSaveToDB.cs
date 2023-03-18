@@ -55,17 +55,17 @@ namespace NCKH.Blockchain.Team4.API.Library
                     string[] values = line.Split(',');
 
 
-                    string formatString = "M/d/yyyy h:mm:ss tt";
+                    string formatString = "d/M/yyyy";
                     // Extract the values and do something with them
                     var cert = new CertificateDTO
                     {
-                        IssuedID = file.PolicyID,
+                        IssuedID = file.UserID,
                         ReceivedID = values[0],
                         CertificateType = values[1],
                         CertificateName = values[2],
                         ReceivedAddressWallet = values[3],
                         ReceivedName = values[4],
-                        ReceivedDoB = DateTime.ParseExact(values[5], formatString, null),
+                        ReceivedDoB = DateTime.ParseExact(values[5], formatString, null).Date,
                         YearOfGraduation = values[6],
                         Classification = values[7],
                         ModeOfStudy = values[8]

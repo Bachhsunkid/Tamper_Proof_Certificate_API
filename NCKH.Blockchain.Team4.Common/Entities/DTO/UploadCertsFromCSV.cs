@@ -12,7 +12,7 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
         /// <summary>
         /// PolicyID cua nguoi gui
         /// </summary>
-        public String PolicyID { get; set; }
+        public String UserID { get; set; }
         /// <summary>
         /// File csv chua cac thong tin ve bang cap cua sinh vien
         /// </summary>

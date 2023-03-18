@@ -14,7 +14,15 @@ namespace NCKH.Blockchain.Team4.API.Controllers
     [ApiController]
     public class CertificatesController : ControllerBase
     {
+
         private List<CertificateDTO> certs = new List<CertificateDTO>();
+
+        private readonly CloudinaryService _cloudinaryService;
+
+        public CertificatesController(CloudinaryService cloudinaryService)
+        {
+            _cloudinaryService = cloudinaryService;
+        }
 
         /// <summary>
         /// Lấy danh sách bằng xuất ra
@@ -86,7 +94,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost("issuer")]
-        public IActionResult UploadCertificates([FromForm] UploadCertsFromCSV file)
+        public async Task<IActionResult> UploadCertificates([FromForm] UploadCertsFromCSV file)
         {
             try
             {
@@ -100,15 +108,11 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 readCSVandSaveToDB.InsertToDB(certs);
 
                 //Draw certificate from csv file data
-                var oganizationName = DataFromDB.GetOganizationNamebyPolicyID(file.PolicyID);
-                drawCertificate.Draw(certs, oganizationName);
-
-                //Up ảnh bằng lên https://cloudinary.com/ và gán đường dẫn vào certificate.imagelink
-                //........
+                var oganizationName = DataFromDB.GetOganizationNamebyPolicyID(file.UserID);
+                await drawCertificate.Draw(certs, oganizationName);
 
                 //Upload to IPFS
-                pinataClientAPI.UploadImagesToIPFS(drawCertificate.ImageFolderPath);
-
+                await pinataClientAPI.UploadImagesToIPFS(drawCertificate.ImageFolderPath);
 
                 return StatusCode(StatusCodes.Status201Created);
             }
