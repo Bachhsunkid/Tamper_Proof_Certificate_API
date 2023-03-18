@@ -21,7 +21,7 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
 
         public string IpfsLink { get; set; }
 
-        public string SentDate { get; set; }
+        public DateTime SentDate { get; set; }
 
         public string ReceivedAddressWallet { get; set; }
 
