@@ -9,6 +9,7 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
     public class DashbroadDTO
     {
         public string Username { get; set; }
+        public string Logo { get; set; }
         public int Pending { get; set; }
         public int Connected { get; set; }
         public int Total { get; set; }
@@ -17,9 +18,10 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
         public int Sent { get; set; }
         public int Received { get; set; }
 
-        public DashbroadDTO(string username, int pending, int connected, int draft, int signed, int sent, int received)
+        public DashbroadDTO(string username, string logo, int pending, int connected, int draft, int signed, int sent, int received)
         {
             Username = username;
+            Logo = logo;
             Pending = pending;
             Connected = connected;
             Total = pending + connected;

@@ -13,7 +13,7 @@ namespace NCKH.Blockchain.Team4.API.Library
         {
             using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
             {
-                ipfs = "https://gateway.pinata.cloud/ipfs/" + ipfs;
+                ipfs = "ipfs://" + ipfs;
                 // create an anonymous object with the new IpfsLink and CertificateCode to update
                 var parameters = new { CertificateCode = code, IpfsLink = ipfs };
 

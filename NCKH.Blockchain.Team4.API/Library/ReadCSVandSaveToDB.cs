@@ -31,7 +31,9 @@ namespace NCKH.Blockchain.Team4.API.Library
             if (!Directory.Exists(uploadsFolder))
                 Directory.CreateDirectory(uploadsFolder);
 
-            var filePath = Path.Combine(uploadsFolder, file.fileCSV.FileName);
+            var userMaxCode = DataFromDB.GetMaxUserCode();
+
+            var filePath = Path.Combine(uploadsFolder, userMaxCode.ToString()+ "_"+ file.fileCSV.FileName);
 
             using (FileStream fs = System.IO.File.Create(filePath))
             {
@@ -61,14 +63,13 @@ namespace NCKH.Blockchain.Team4.API.Library
                     {
                         IssuedID = file.UserID,
                         ReceivedID = values[0],
-                        CertificateType = values[1],
-                        CertificateName = values[2],
-                        ReceivedAddressWallet = values[3],
-                        ReceivedName = values[4],
-                        ReceivedDoB = DateTime.ParseExact(values[5], formatString, null).Date,
-                        YearOfGraduation = values[6],
-                        Classification = values[7],
-                        ModeOfStudy = values[8]
+                        CertificateName = values[1],
+                        ReceivedAddressWallet = values[2],
+                        ReceivedName = values[3],
+                        ReceivedDoB = DateTime.ParseExact(values[4], formatString, null).Date,
+                        YearOfGraduation = values[5],
+                        Classification = values[6],
+                        ModeOfStudy = values[7]
                     };
                     lstCerts.Add(cert);
                 }

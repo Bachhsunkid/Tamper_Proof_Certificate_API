@@ -10,7 +10,7 @@ namespace NCKH.Blockchain.Team4.Common.Constant
     {
         public static string ConnectionString = "Server=sql12.freesqldatabase.com;Port=3306;Database=sql12604943;Uid=sql12604943;Pwd=3MwLRCfhE9;";
 
-        public static string DASHBROAD_INFOR = "proc_dashbroad_GetInfor";
+        public static string DASHBOARD_INFOR = "proc_dashboard_GetInfor";
 
         public static string CONTACT_GETALL = "Proc_Contact_GetAll";
 
@@ -43,6 +43,10 @@ namespace NCKH.Blockchain.Team4.Common.Constant
         public static string CERTIFICATE_SEND = "Proc_certificate_send";
 
         public static string CERTIFICATE_SIGN = "Proc_certificate_sign";
+
+        public static string CERTIFICATE_BAN = "Proc_certificate_ban";
+
+        public static string CERTIFICATE_BAN_MULTIPLE = "Proc_certificate_banmultiple";
 
         public static string USER_INSERT = "Proc_User_Insert";
 

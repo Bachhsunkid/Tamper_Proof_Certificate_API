@@ -297,9 +297,9 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 parameters.Add("v_CertificateID", certificateID);
 
                 //Thực hiện gọi vào DB
-                var employee = mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                var cert = mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
 
-                if (employee > 0)
+                if (cert > 0)
                 {
                     return StatusCode(StatusCodes.Status200OK, certificateID);
                 }
@@ -317,7 +317,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
         /// </summary>
         /// <param name="certificateIDs"></param>
         /// <returns></returns>
-        [HttpDelete("delete-multiple")]
+        [HttpDelete("issued/delete-multiple")]
         public IActionResult DeleteMultipleCertificates([FromBody] List<string> certificateIDs)
         {
             try
@@ -326,6 +326,82 @@ namespace NCKH.Blockchain.Team4.API.Controllers
 
                 //Chuẩn bị câu lệnh sql 
                 string storedProcedureName = DatabaseContext.CERTIFICATE_DELETE_MULTIPLE;
+
+                //Xử lý string đầu vào proc về dạng "A,B,C"
+                string inputProc = String.Join(",", certificateIDs);
+
+                //Chuẩn bị tham số đầu vào
+                var parameters = new DynamicParameters();
+                parameters.Add("v_CertificateIDs", inputProc);
+
+                //Thực hiện gọi vào DB
+                var certEffected = mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+
+                if (certificateIDs.Count > 0)
+                {
+                    return StatusCode(StatusCodes.Status200OK, certificateIDs);
+                }
+
+                return StatusCode(StatusCodes.Status404NotFound);
+            }
+            //Try catch Exception
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Xóa 1 bằng cấp
+        /// </summary>
+        /// <param name="certificateID"></param>
+        /// <returns></returns>
+        [HttpPost("issued/ban")]
+        public IActionResult BanCertificate([FromBody] Guid certificateID)
+        {
+            try
+            {
+                //Khởi tạo kết nối với DB Mysql
+                var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
+
+                //Chuẩn bị câu lệnh sql 
+                string storedProcedureName = DatabaseContext.CERTIFICATE_BAN;
+
+                //Chuẩn bị tham số đầu vào
+                var parameters = new DynamicParameters();
+                parameters.Add("v_CertificateID", certificateID);
+
+                //Thực hiện gọi vào DB
+                var cert = mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+
+                if (cert > 0)
+                {
+                    return StatusCode(StatusCodes.Status200OK, certificateID);
+                }
+                return StatusCode(StatusCodes.Status404NotFound);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /// <summary>
+        /// Xóa nhiều bằng cấp theo danh sách ID bằng được chọn
+        /// </summary>
+        /// <param name="certificateIDs"></param>
+        /// <returns></returns>
+        [HttpPost("issued/ban-multiple")]
+        public IActionResult BanMultipleCertificates([FromBody] List<string> certificateIDs)
+        {
+            try
+            {
+                var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
+
+                //Chuẩn bị câu lệnh sql 
+                string storedProcedureName = DatabaseContext.CERTIFICATE_BAN_MULTIPLE;
 
                 //Xử lý string đầu vào proc về dạng "A,B,C"
                 string inputProc = String.Join(",", certificateIDs);

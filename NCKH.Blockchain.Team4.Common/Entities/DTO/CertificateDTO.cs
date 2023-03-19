@@ -10,7 +10,6 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
     {
         public string IssuedID { get; set; }
         public string ReceivedID { get; set; }
-        public string CertificateType { get; set; }
         public string CertificateName { get; set; }
         public string ReceivedAddressWallet { get; set; }
         public string ReceivedName { get; set; }
