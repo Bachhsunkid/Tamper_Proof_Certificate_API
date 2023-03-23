@@ -8,8 +8,8 @@ namespace NCKH.Blockchain.Team4.Common.Constant
 {
     public class PinataContext
     {
-        public const string API_KEY = "4db6a4183339db480d1e";
+        public const string API_KEY = "2e0ec987a30c56fb05e0";
 
-        public const string API_SECRET = "0ad1f05ac429b14644f38d3d27ec6ff7b4cf1f3b07f144f90f4ebb645f5b7a8d";
+        public const string API_SECRET = "1ca739ff68ea162525df3a602fbce730b6bca0ff01ce1699b3446e8aee7e912e";
     }
 }

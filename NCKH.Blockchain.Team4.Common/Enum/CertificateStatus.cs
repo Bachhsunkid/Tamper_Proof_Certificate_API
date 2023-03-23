@@ -8,10 +8,12 @@ namespace NCKH.Blockchain.Team4.Common.Enum
 {
     public enum CertificateStatus
     {
-        Draft = 0,
+        Draft = 1,
 
-        Signed = 1,
+        Signed = 2,
 
-        Sent = 2,
+        Sent = 3,
+
+        Banned = 4
     }
 }

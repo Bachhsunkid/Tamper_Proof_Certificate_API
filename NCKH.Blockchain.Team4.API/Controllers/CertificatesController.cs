@@ -429,26 +429,27 @@ namespace NCKH.Blockchain.Team4.API.Controllers
         }
 
         [HttpPost("add-transaction-link")]
-        public IActionResult AddTransactionLinkCertificates([FromBody] TransactionLink transactionLink)
+        public IActionResult AddTransactionLinkCertificates([FromBody] TransactionLinkDTO transactionLink)
         {
             try
             {
                 int countCertEffected = 0;
-                for (int i = 0; i < transactionLink.certificateIDs.Count; i++)
-                {
-                    var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
 
-                    string storedProcedureName = DatabaseContext.CERTIFICATE_ADD_TRANSACTIONLINK;
+                var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
 
-                    var parameters = new DynamicParameters();
-                    parameters.Add("v_CertificateID", transactionLink.certificateIDs[i]);
-                    parameters.Add("v_TransactionLink", transactionLink.hashes[i]);
+                string storedProcedureName = DatabaseContext.CERTIFICATE_ADD_TRANSACTIONLINK;
 
-                    mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                //Xử lý string đầu vào proc về dạng "A,B,C"
+                string inputProc = String.Join(",", transactionLink.certificateIDs);
 
-                    countCertEffected++;
-                }
-                if (countCertEffected == transactionLink.certificateIDs.Count && countCertEffected == transactionLink.hashes.Count)
+                var parameters = new DynamicParameters();
+                parameters.Add("v_CertificateIDs", inputProc);
+                parameters.Add("v_TransactionLink", transactionLink.hash);
+
+                mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                countCertEffected++;
+
+                if (countCertEffected > 0)
                 {
                     return StatusCode(StatusCodes.Status200OK, transactionLink.certificateIDs);
                 }

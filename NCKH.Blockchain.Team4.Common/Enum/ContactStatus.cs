@@ -8,7 +8,7 @@ namespace NCKH.Blockchain.Team4.Common.Enum
 {
     public enum ContactStatus
     {
-        Pending = 0,
-        Connected = 1
+        Pending = 1,
+        Connected = 2
     }
 }
