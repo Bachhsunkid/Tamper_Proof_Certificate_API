@@ -11,12 +11,12 @@
   <Connection>
     <ConnectionModel>
       <PropertyValue Name="Database">59f90733-4d68-4fdf-82a7-f0fcbf5460aa</PropertyValue>
-      <PropertyValue Name="ConnectionString" xml:space="preserve">User Id=sql12604943;Host=sql12.freesqldatabase.com;Character Set=utf8</PropertyValue>
+      <PropertyValue Name="ConnectionString" xml:space="preserve">User Id=sql12608917;Host=sql12.freemysqlhosting.net;Database=sql12608917;Character Set=utf8</PropertyValue>
       <PropertyValue Name="ExecutionTimeout">0</PropertyValue>
     </ConnectionModel>
-    <Database>sql12604943</Database>
+    <Database>sql12608917</Database>
   </Connection>
-  <Views ShowAdditionalViews="False" IsLayoutActiveAttribute="True" MainViewAttribute="Code" MainViewScale="56">
+  <Views ShowAdditionalViews="False" IsLayoutActiveAttribute="True" MainViewAttribute="Code" MainViewScale="78">
     <View Name="Design" Visible="False" />
     <View Name="Code" Active="True" Visible="True">
       <Data />

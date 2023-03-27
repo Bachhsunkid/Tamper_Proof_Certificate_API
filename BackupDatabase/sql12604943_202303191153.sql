@@ -163,16 +163,17 @@ CREATE TABLE user (
   UserID varchar(255) NOT NULL DEFAULT '' COMMENT 'Khóa chính, là địa chỉ ví skate',
   UserCode mediumint(8) UNSIGNED NOT NULL COMMENT 'Mã code, để hiển thị lên trang web',
   UserName varchar(255) DEFAULT NULL COMMENT 'Tên tổ chức',
+  AddressWallet varchar(255) DEFAULT '' COMMENT 'địa chỉ ví của tài khoản',
   Logo text DEFAULT NULL,
-  AddressWallet varchar(255) DEFAULT '' COMMENT 'PolicyID Của tài khoản',
   CreatedDate datetime DEFAULT NULL COMMENT 'Ngày tạo tài khoản',
+  isVerified tinyint(4) DEFAULT 0 COMMENT 'Đã được xác thực hay chưa (0-chưa; 1- rồi)',
   IsDeleted tinyint(4) DEFAULT 0 COMMENT 'Bị xóa hay chưa (0-chưa xóa; 1-đã xóa)',
   PRIMARY KEY (UserID)
 )
 ENGINE = INNODB,
 AVG_ROW_LENGTH = 1170,
-CHARACTER SET latin1,
-COLLATE latin1_swedish_ci;
+CHARACTER SET utf8mb4,
+COLLATE utf8mb4_general_ci;
 
 --
 -- Create index `UserCode` on table `user`
@@ -188,7 +189,7 @@ CREATE TABLE contact (
   IssuedID varchar(255) NOT NULL DEFAULT '' COMMENT 'Khóa ngoại, liên kết với bảng user(PolicyID)',
   ReceivedID varchar(255) NOT NULL DEFAULT '' COMMENT 'Khóa ngoại, liên kết với bảng user(PolicyID)',
   ContactCode mediumint(8) UNSIGNED NOT NULL COMMENT 'mã hiện thị trên website, có kiểu là số',
-  ContactStatus tinyint(4) DEFAULT NULL COMMENT 'Trạng thái kết nối (0-pending, 1-connected)',
+  ContactStatus tinyint(4) DEFAULT 1 NULL COMMENT 'Trạng thái kết nối (1-pending, 2-connected)',
   CreatedDate datetime DEFAULT NULL COMMENT 'Ngày tạo',
   IsDeleted tinyint(4) NOT NULL COMMENT 'xóa hay chưa (0-hiện/1-ẩn)',
   PRIMARY KEY (ContactID)
@@ -223,7 +224,7 @@ DELIMITER $$
 --
 -- Create procedure `proc_contact_insert`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_contact_insert (IN v_IssuedID varchar(255), IN v_ReceivedID varchar(255))
 COMMENT 'Thêm mới một liên lạc'
 BEGIN
@@ -322,8 +323,9 @@ $$
 --
 -- Create procedure `Proc_Contact_GetAll`
 --
-CREATE DEFINER = 'sql12604943'@'%'
-PROCEDURE Proc_Contact_GetAll (IN v_UserID varchar(255))
+CREATE DEFINER = 'sql12608917'@'%'
+PROCEDURE proc_contact_getAll (IN v_UserID varchar(255))
+COMMENT 'Lấy tất cả liên hệ của 1 user bằng địa chỉ ví stake'
 BEGIN
   SELECT
     c.ContactID,
@@ -351,9 +353,9 @@ $$
 --
 -- Create procedure `proc_contact_delete`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_contact_delete (IN v_ContactID char(36))
-COMMENT 'Xóa '
+COMMENT 'Ẩn 1 liên hệ'
 BEGIN
   UPDATE contact c
   SET c.IsDeleted = 1
@@ -364,7 +366,7 @@ $$
 --
 -- Create procedure `proc_contact_accept`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_contact_accept (IN v_ContactID char(36))
 BEGIN
   UPDATE contact c
@@ -385,20 +387,19 @@ CREATE TABLE certificate (
   CertificateCode mediumint(9) NOT NULL COMMENT 'Mã code, để hiển thị lên trang web',
   CertificateType varchar(255) NOT NULL COMMENT 'Kiểu bằng cấp (0-Education Certificate)',
   CertificateName varchar(255) NOT NULL DEFAULT '' COMMENT 'Tên bằng cấp (Bằng kỹ sư, bằng cử nhân)',
-  ReceivedAddressWallet varchar(255) DEFAULT NULL COMMENT 'Dia chi vi nguoi nhan',
+  ReceivedAddressWallet varchar(255) DEFAULT NULL COMMENT 'Địa chỉ ví người nhận',
+  ReceivedIdentityNumber varchar(255) DEFAULT '' COMMENT 'số CCCD/CMND của người nhận',
   ReceivedName varchar(255) DEFAULT NULL COMMENT 'Tên người nhận bằng',
   ReceivedDoB date DEFAULT NULL COMMENT 'Ngày sinh người nhận bằng',
   YearOfGraduation smallint(6) DEFAULT NULL,
   Classification varchar(50) NOT NULL DEFAULT '' COMMENT 'Loại bằng cấp',
   ModeOfStudy varchar(255) DEFAULT NULL COMMENT 'Hình thức đào tạo (0-Chính quy tập trung, 1-Tại chức)',
   IpfsLink varchar(255) DEFAULT NULL COMMENT 'Mã ipfs của ảnh bằng',
-  ImageLink text DEFAULT NULL,
-  TransactionLink text DEFAULT NULL,
-  CertificateStatus tinyint(4) DEFAULT NULL COMMENT 'Trạng thái của bằng cấp (0-Draft/1-Signed/2-Sent)',
+  ImageLink text DEFAULT NULL COMMENT 'Đường link ảnh trên cloudbinary',
+  TransactionLink text DEFAULT NULL COMMENT 'Mã hash của giao dịch cấp bằng',
+  CertificateStatus tinyint(4) DEFAULT 1 NULL COMMENT 'Trạng thái của bằng cấp (1-Draft/2-Signed/3-Sent/4-Banned)',
   CreatedDate datetime DEFAULT NULL,
-  IsSigned tinyint(4) DEFAULT 0 COMMENT 'Được kí hay chưa (0-chưa kí; 1-đã kí)',
   SignedDate datetime DEFAULT NULL COMMENT 'Ngày kí',
-  IsSend tinyint(4) NOT NULL COMMENT 'Gửi bằng hay chưa (0-Chưa gửi/1-Đã gửi)',
   SentDate datetime DEFAULT NULL COMMENT 'Ngày tháng xuất/nhận bằng',
   IsDeleted tinyint(4) DEFAULT NULL,
   PRIMARY KEY (CertificateID)
@@ -407,6 +408,13 @@ ENGINE = INNODB,
 AVG_ROW_LENGTH = 910,
 CHARACTER SET latin1,
 COLLATE latin1_swedish_ci;
+
+
+--
+-- Create index CertificateCode on table `contact`
+--
+ALTER TABLE certificate
+ADD UNIQUE INDEX CertificateCode (CertificateCode);
 
 --
 -- Create foreign key
@@ -427,9 +435,10 @@ DELIMITER $$
 --
 -- Create procedure `proc_dashboard_GetInfor`
 --
-CREATE DEFINER = 'sql12604943'@'%'
-PROCEDURE proc_dashboard_GetInfor (IN v_UserID varchar(255),
+CREATE DEFINER = 'sql12608917'@'%'
+PROCEDURE proc_dashboard_getInfor (IN v_UserID varchar(255),
 OUT v_Username varchar(255),
+OUT v_IsVerified tinyint,
 OUT v_Logo varchar(255),
 OUT v_Pending int,
 OUT v_Connected int,
@@ -437,9 +446,15 @@ OUT v_Draft int,
 OUT v_Signed int,
 OUT v_Sent int,
 OUT v_Received int)
+COMMENT 'Lấy tất cả liên hệ của 1 user bằng địa chỉ ví stake'
 BEGIN
   SELECT
     UserName INTO v_Username
+  FROM user
+  WHERE UserID = v_UserID;
+
+  SELECT
+    isVerified INTO v_IsVerified
   FROM user
   WHERE UserID = v_UserID;
 
@@ -491,12 +506,12 @@ $$
 --
 -- Create procedure `proc_certificate_sign`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_certificate_sign (IN v_CertificateID char(36))
+COMMENT 'Kí 1 bằng theo CertificateID'
 BEGIN
   UPDATE certificate c
-  SET c.CertificateStatus = 1,
-      c.IsSigned = 1,
+  SET c.CertificateStatus = 2,
       c.SignedDate = NOW()
   WHERE c.CertificateID = v_CertificateID;
 END
@@ -505,12 +520,12 @@ $$
 --
 -- Create procedure `proc_certificate_send`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_certificate_send (IN v_CertificateID char(36))
+COMMENT 'Gửi 1 bằng theo CertificateID'
 BEGIN
   UPDATE certificate c
-  SET c.CertificateStatus = 2,
-      c.IsSend = 1,
+  SET c.CertificateStatus = 3,
       c.SentDate = NOW()
   WHERE c.CertificateID = v_CertificateID;
 END
@@ -519,11 +534,12 @@ $$
 --
 -- Create procedure `proc_certificate_insert`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_certificate_insert (IN v_IssuedID varchar(255),
 IN v_ReceivedID varchar(255),
-IN v_CertificateName varchar(255),
 IN v_ReceivedAddressWallet varchar(255),
+IN v_ReceivedIdentityNumber varchar(255),
+IN v_CertificateName varchar(255),
 IN v_ReceivedName varchar(255),
 IN v_ReceivedDoB date,
 IN v_YearOfGraduation smallint,
@@ -544,14 +560,13 @@ BEGIN
   END IF;
 
   INSERT INTO certificate
-    VALUES (UUID(), v_IssuedID, v_ReceivedID, CODE, 'UTC', v_CertificateName, v_ReceivedAddressWallet, v_ReceivedName, v_ReceivedDoB, v_YearOfGraduation, v_Classification, v_ModeOfStudy, '', -- ipfslink
+    VALUES (UUID(), v_IssuedID, v_ReceivedID, CODE, 'UTC', v_CertificateName, v_ReceivedAddressWallet, v_ReceivedIdentityNumber,v_ReceivedName, v_ReceivedDoB, v_YearOfGraduation, v_Classification, v_ModeOfStudy, 
+    '', -- ipfslink
     '', -- imagelink
     '', -- transactionlink
-    0, -- CertificateStatus: Draft
+    1, -- CertificateStatus: Draft
     NOW(), -- CreatedDate: NOW
-    0, -- IsSigned: Chua ki
     NULL, -- SignedDate: NULL
-    0, -- IsSent: Chua gui
     NULL, -- SentDate: NULL
     0); -- IsDeleted: Chua xoa
 
@@ -563,7 +578,7 @@ $$
 --
 -- Create procedure `proc_certificate_GetPagingReceived`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_certificate_GetPagingReceived (IN v_ReceivedID varchar(255),
 IN v_PageSize int,
 IN v_PageNumber int,
@@ -627,7 +642,7 @@ $$
 --
 -- Create procedure `proc_certificate_GetPagingIssued`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_certificate_GetPagingIssued (IN v_IssuerID varchar(255),
 IN v_PageSize int,
 IN v_PageNumber int,
@@ -699,8 +714,8 @@ $$
 --
 -- Create procedure `Proc_Certificate_GetAllReceived`
 --
-CREATE DEFINER = 'sql12604943'@'%'
-PROCEDURE Proc_Certificate_GetAllReceived (IN v_ReceivedID varchar(255))
+CREATE DEFINER = 'sql12608917'@'%'
+PROCEDURE proc_certificate_getAllReceived (IN v_ReceivedID varchar(255))
 BEGIN
   SELECT
     c.CertificateID,
@@ -708,6 +723,7 @@ BEGIN
     c.TransactionLink,
     c.CertificateCode,
     u.UserName AS `OganizationName`,
+    u.isVerified,
     c.ReceivedName,
     c.ReceivedDoB,
     c.CertificateName,
@@ -720,8 +736,7 @@ BEGIN
       ON c.IssuedID = u.UserID
   -- Check conditions
   WHERE c.ReceivedID = v_ReceivedID
-  AND c.IsSend = 1
-  AND c.IsSigned = 1
+  AND c.CertificateStatus = 3
   AND c.IsDeleted = 0
 
   ORDER BY c.CreatedDate;
@@ -731,8 +746,8 @@ $$
 --
 -- Create procedure `Proc_Certificate_GetAllIssued`
 --
-CREATE DEFINER = 'sql12604943'@'%'
-PROCEDURE Proc_Certificate_GetAllIssued (IN v_IssuerID varchar(255))
+CREATE DEFINER = 'sql12608917'@'%'
+PROCEDURE proc_certificate_getAllIssued (IN v_IssuerID varchar(255))
 BEGIN
   SELECT
     c.CertificateID,
@@ -770,7 +785,7 @@ $$
 --
 -- Create procedure `proc_certificate_delete`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_certificate_delete (IN v_CertificateID char(36))
 BEGIN
   UPDATE certificate c
@@ -782,11 +797,11 @@ $$
 --
 -- Create procedure `proc_certificate_ban`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_certificate_ban (IN v_CertificateID char(36))
 BEGIN
   UPDATE certificate c
-  SET c.CertificateStatus = 3
+  SET c.CertificateStatus = 4
   WHERE c.CertificateID = v_CertificateID;
 END
 $$
@@ -794,7 +809,7 @@ $$
 --
 -- Create procedure `proc_Certificate_AddTransactionLink`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_Certificate_AddTransactionLink (IN v_CertificateID char(36), IN v_TransactionLink text)
 BEGIN
   UPDATE certificate c
@@ -806,7 +821,7 @@ $$
 --
 -- Create procedure `proc_user_insert`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_user_insert (IN v_UserID varchar(255), IN v_UserName varchar(255), IN v_Logo varchar(255))
 COMMENT 'Procedure thêm mới 1 nguoi dung'
 BEGIN
@@ -824,14 +839,14 @@ BEGIN
   END IF;
 
   INSERT INTO user
-    VALUES (v_UserID, CODE, v_UserName, v_Logo, '', NOW(), 0);
+    VALUES (v_UserID, CODE, v_UserName, v_Logo, NOW(), 0);
 END
 $$
 
 --
 -- Create procedure `proc_user_delete`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_user_delete (IN v_UserID varchar(255))
 COMMENT 'Xóa 1 người dùng'
 BEGIN
@@ -844,41 +859,37 @@ $$
 --
 -- Create procedure `Proc_Certificate_SignMultiple`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE Proc_Certificate_SignMultiple (IN v_CertificateIDs text)
 BEGIN
   SET @v_CertificateIDs = REPLACE(v_CertificateIDs, ',', ''',''');
 
-  SET @Query = CONCAT('UPDATE certificate SET IsSigned = 1, CertificateStatus = 1, SignedDate = NOW() WHERE CertificateID IN (''', @v_CertificateIDs, ''');');
+  SET @Query = CONCAT('UPDATE certificate SET CertificateStatus = 2, SignedDate = NOW() WHERE CertificateID IN (''', @v_CertificateIDs, ''');');
 
   PREPARE deleteQueryStatement FROM @Query;
   EXECUTE deleteQueryStatement;
-
-  DEALLOCATE PREPARE deleteQueryStatement;
 END
 $$
 
 --
 -- Create procedure `Proc_Certificate_SendMultiple`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE Proc_Certificate_SendMultiple (IN v_CertificateIDs text)
 BEGIN
   SET @v_CertificateIDs = REPLACE(v_CertificateIDs, ',', ''',''');
 
-  SET @Query = CONCAT('UPDATE certificate SET certificateStatus = 2, IsSend = 1, SentDate = NOW() WHERE CertificateID IN (''', @v_CertificateIDs, ''');');
+  SET @Query = CONCAT('UPDATE certificate SET certificateStatus = 3, SentDate = NOW() WHERE CertificateID IN (''', @v_CertificateIDs, ''');');
 
   PREPARE deleteQueryStatement FROM @Query;
   EXECUTE deleteQueryStatement;
-
-  DEALLOCATE PREPARE deleteQueryStatement;
 END
 $$
 
 --
 -- Create procedure `proc_certificate_DeleteMultiple`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_certificate_DeleteMultiple (IN v_CertificateIDs text)
 BEGIN
   SET @v_CertificateIDs = REPLACE(v_CertificateIDs, ',', ''',''');
@@ -887,20 +898,18 @@ BEGIN
 
   PREPARE deleteQueryStatement FROM @Query;
   EXECUTE deleteQueryStatement;
-
-  DEALLOCATE PREPARE deleteQueryStatement;
 END
 $$
 
 --
 -- Create procedure `proc_certificate_BanMultiple`
 --
-CREATE DEFINER = 'sql12604943'@'%'
+CREATE DEFINER = 'sql12608917'@'%'
 PROCEDURE proc_certificate_BanMultiple (IN v_CertificateIDs text)
 BEGIN
   SET @v_CertificateIDs = REPLACE(v_CertificateIDs, ',', ''',''');
 
-  SET @Query = CONCAT('UPDATE certificate SET certificatestatus = 3 WHERE CertificateID IN (''', @v_CertificateIDs, ''');');
+  SET @Query = CONCAT('UPDATE certificate SET certificatestatus = 4 WHERE CertificateID IN (''', @v_CertificateIDs, ''');');
 
   PREPARE deleteQueryStatement FROM @Query;
   EXECUTE deleteQueryStatement;

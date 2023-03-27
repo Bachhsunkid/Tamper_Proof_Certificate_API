@@ -9,7 +9,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class ContactsController : ControllerBase
+    public class ContactController : ControllerBase
     {
         /// <summary>
         /// Lấy danh sách kết nối theo policyID

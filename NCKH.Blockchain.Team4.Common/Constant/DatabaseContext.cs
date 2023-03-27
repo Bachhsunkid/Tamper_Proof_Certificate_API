@@ -1,44 +1,30 @@
-﻿using System;
+﻿using NCKH.Blockchain.Team4.Common.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Unicode;
 using System.Threading.Tasks;
 
 namespace NCKH.Blockchain.Team4.Common.Constant
 {
     public class DatabaseContext
     {
-        public static string ConnectionString = "Server=sql12.freesqldatabase.com;Port=3306;Database=sql12604943;Uid=sql12604943;Pwd=3MwLRCfhE9;";
+        public static string ConnectionString = "Server=sql12.freemysqlhosting.net;Port=3306;Database=sql12608917;Uid=sql12608917;Pwd=eXSxudZxTM;";
 
         public static string DASHBOARD_INFOR = "proc_dashboard_GetInfor";
 
-        public static string CONTACT_GETALL = "Proc_Contact_GetAll";
-
-        public static string CONTACT_GET_PAGING_AND_FILLTER = "proc_contact_GetPaging";
-
-        public static string CONTACT_DELETE = "Proc_contact_Delete";
+        public static string CONTACT_GETALL = "proc_contact_getAll";
 
         public static string CONTACT_ACCEPT = "Proc_contact_accept";
 
-        public static string CERTIFICATE_GETALL_ISSUED = "proc_certificate_GetAllIssued";
-
-        public static string CERTIFICATE_GETALL_RECEIVED = "proc_certificate_GetAllReceived";
-
-        public static string CERTIFICATE_SIGN_MULTIPLE = "proc_certificate_SignMultiple";
-
-        public static string CERTIFICATE_SEND_MULTIPLE = "proc_certificate_SendMultiple";
-
-        public static string CERTIFICATE_ISSUED_GET_PAGING_AND_FILLTER = "proc_certificate_GetPagingIssued";
-
-        public static string CERTIFICATE_RECEIVED_GET_PAGING_AND_FILLTER = "proc_certificate_GetPagingReceived";
+        public static string CONTACT_DELETE = "Proc_contact_delete";
 
         public static string CERTIFICATE_INSERT = "Proc_certificate_Insert";
 
-        public static string CERTIFICATE_DELETE = "Proc_certificate_delete";
+        public static string CERTIFICATE_GETALL_ISSUED = "proc_certificate_getAllIssued";
 
-        public static string CERTIFICATE_DELETE_MULTIPLE = "proc_certificate_DeleteMultiple";
-
-        public static string CERTIFICATE_ADD_TRANSACTIONLINK = "proc_Certificate_AddTransactionLink";
+        public static string CERTIFICATE_GETALL_RECEIVED = "proc_certificate_getAllReceived";
 
         public static string CERTIFICATE_SEND = "Proc_certificate_send";
 
@@ -46,9 +32,20 @@ namespace NCKH.Blockchain.Team4.Common.Constant
 
         public static string CERTIFICATE_BAN = "Proc_certificate_ban";
 
-        public static string CERTIFICATE_BAN_MULTIPLE = "Proc_certificate_banmultiple";
+        public static string CERTIFICATE_DELETE = "Proc_certificate_delete";
+
+        public static string CERTIFICATE_SIGN_MULTIPLE = "proc_certificate_SignMultiple";
+
+        public static string CERTIFICATE_SEND_MULTIPLE = "proc_certificate_SendMultiple";
+
+        public static string CERTIFICATE_BAN_MULTIPLE = "Proc_certificate_banMultiple";
+
+        public static string CERTIFICATE_DELETE_MULTIPLE = "proc_certificate_DeleteMultiple";
+
+        public static string CERTIFICATE_ADD_TRANSACTIONLINK = "proc_Certificate_AddTransactionLink";
 
         public static string USER_INSERT = "Proc_User_Insert";
 
+        public static string USER_DELETE = "Proc_User_Delete";
     }
 }

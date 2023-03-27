@@ -12,14 +12,14 @@ namespace NCKH.Blockchain.Team4.API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class CertificatesController : ControllerBase
+    public class CertificateController : ControllerBase
     {
 
         private List<CertificateDTO> certs = new List<CertificateDTO>();
 
         private readonly CloudinaryService _cloudinaryService;
 
-        public CertificatesController(CloudinaryService cloudinaryService)
+        public CertificateController(CloudinaryService cloudinaryService)
         {
             _cloudinaryService = cloudinaryService;
         }
@@ -433,8 +433,6 @@ namespace NCKH.Blockchain.Team4.API.Controllers
         {
             try
             {
-                int countCertEffected = 0;
-
                 var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
 
                 string storedProcedureName = DatabaseContext.CERTIFICATE_ADD_TRANSACTIONLINK;
@@ -446,8 +444,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 parameters.Add("v_CertificateIDs", inputProc);
                 parameters.Add("v_TransactionLink", transactionLink.hash);
 
-                mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
-                countCertEffected++;
+                int countCertEffected = mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
 
                 if (countCertEffected > 0)
                 {

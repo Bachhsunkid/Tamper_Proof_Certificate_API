@@ -72,6 +72,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
 
                 var parameters = new DynamicParameters();
                 parameters.Add("v_UserID", userId, DbType.String, direction: ParameterDirection.Input);
+                parameters.Add("v_IsVerified", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 parameters.Add("v_Username", dbType: DbType.String, direction: ParameterDirection.Output);
                 parameters.Add("v_Logo", dbType: DbType.String, direction: ParameterDirection.Output);
                 parameters.Add("v_Pending", dbType: DbType.Int32, direction: ParameterDirection.Output);
@@ -84,6 +85,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 mySqlConnection.Execute(storedProcedureName, parameters, commandType: CommandType.StoredProcedure);
 
                 string username = parameters.Get<string>("v_Username");
+                int isVerified = parameters.Get<int>("v_IsVerified");
                 string logo = parameters.Get<string>("v_Logo");
                 int pending = parameters.Get<int>("v_Pending");
                 int connected = parameters.Get<int>("v_Connected");
@@ -92,7 +94,7 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 int sent = parameters.Get<int>("v_Sent");
                 int receiveed = parameters.Get<int>("v_Received");
 
-                var dashbroadDTO = new DashbroadDTO(username, logo, pending, connected, draft, signed, sent, receiveed);
+                var dashbroadDTO = new DashbroadDTO(username, isVerified, logo, pending, connected, draft, signed, sent, receiveed);
 
                 if (username == null)
                 {

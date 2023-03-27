@@ -63,13 +63,14 @@ namespace NCKH.Blockchain.Team4.API.Library
                     {
                         IssuedID = file.UserID,
                         ReceivedID = values[0],
-                        CertificateName = values[1],
-                        ReceivedAddressWallet = values[2],
-                        ReceivedName = values[3],
-                        ReceivedDoB = DateTime.ParseExact(values[4], formatString, null).Date,
-                        YearOfGraduation = values[5],
-                        Classification = values[6],
-                        ModeOfStudy = values[7]
+                        ReceivedAddressWallet = values[1],
+                        ReceivedIdentityNumber = values[2],
+                        CertificateName = values[3],
+                        ReceivedName = values[4],
+                        ReceivedDoB = DateTime.ParseExact(values[5], formatString, null).Date,
+                        YearOfGraduation = values[6],
+                        Classification = values[7],
+                        ModeOfStudy = values[8]
                     };
                     lstCerts.Add(cert);
                 }
