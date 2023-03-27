@@ -18,9 +18,10 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
         public int Draft { get; set; }
         public int Signed { get; set; }
         public int Sent { get; set; }
+        public int Banned { get; set; }
         public int Received { get; set; }
 
-        public DashbroadDTO(string username, int isVerified, string logo, int pending, int connected, int draft, int signed, int sent, int received)
+        public DashbroadDTO(string username, int isVerified, string logo, int pending, int connected, int draft, int signed, int sent, int banned, int received)
         {
             Username = username;
             Logo = logo;
@@ -31,6 +32,7 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
             Draft = draft;
             Signed = signed;
             Sent = sent;
+            Banned = banned;
             Received = received;
         }
     }
