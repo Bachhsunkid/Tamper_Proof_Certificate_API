@@ -10,7 +10,7 @@ namespace NCKH.Blockchain.Team4.Common.Constant
 {
     public class DatabaseContext
     {
-        public static string ConnectionString = "Server=sql12.freemysqlhosting.net;Port=3306;Database=sql12608917;Uid=sql12608917;Pwd=eXSxudZxTM;";
+        public static string ConnectionString = "Server=sql12.freemysqlhosting.net;Port=3306;Database=sql12610912;Uid=sql12610912;Pwd=9ibsaCeMD3;";
 
         public static string DASHBOARD_INFOR = "proc_dashboard_GetInfor";
 
