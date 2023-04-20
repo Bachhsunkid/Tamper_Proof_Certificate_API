@@ -24,7 +24,7 @@ SET NAMES 'utf8';
 --
 -- Set default database
 --
-USE sql12612725;
+USE sql12613779;
 
 --
 -- Drop procedure `proc_certificate_BanMultiple`
@@ -139,7 +139,7 @@ DROP TABLE IF EXISTS user;
 --
 -- Set default database
 --
-USE sql12612725;
+USE sql12613779;
 
 --
 -- Create table `user`
@@ -208,7 +208,7 @@ DELIMITER $$
 --
 -- Create procedure `proc_contact_insert`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_contact_insert (IN v_IssuedID varchar(255), IN v_ReceivedID varchar(255))
 COMMENT 'Thêm mới một liên lạc'
 BEGIN
@@ -246,7 +246,7 @@ $$
 --
 -- Create procedure `proc_contact_getAll`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_contact_getAll (IN v_UserID varchar(255))
 COMMENT 'Lấy tất cả liên hệ của 1 user bằng địa chỉ ví stake'
 BEGIN
@@ -276,7 +276,7 @@ $$
 --
 -- Create procedure `proc_contact_delete`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_contact_delete (IN v_ContactID char(36))
 COMMENT 'Ẩn 1 liên hệ'
 BEGIN
@@ -289,7 +289,7 @@ $$
 --
 -- Create procedure `proc_contact_accept`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_contact_accept (IN v_ContactID char(36))
 BEGIN
   UPDATE contact c
@@ -357,7 +357,7 @@ DELIMITER $$
 --
 -- Create procedure `proc_dashboard_getInfor`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_dashboard_getInfor (IN v_UserID varchar(255),
 OUT v_Username varchar(255),
 OUT v_IsVerified tinyint,
@@ -435,7 +435,7 @@ $$
 --
 -- Create procedure `proc_certificate_sign`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_certificate_sign (IN v_CertificateID char(36))
 COMMENT 'Kí 1 bằng theo CertificateID'
 BEGIN
@@ -449,7 +449,7 @@ $$
 --
 -- Create procedure `proc_certificate_send`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_certificate_send (IN v_CertificateID char(36))
 COMMENT 'Gửi 1 bằng theo CertificateID'
 BEGIN
@@ -463,7 +463,7 @@ $$
 --
 -- Create procedure `proc_certificate_insert`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_certificate_insert (IN v_IssuedID varchar(255),
 IN v_ReceivedID varchar(255),
 IN v_ReceivedAddressWallet varchar(255),
@@ -506,7 +506,7 @@ $$
 --
 -- Create procedure `proc_certificate_getAllReceived`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_certificate_getAllReceived (IN v_ReceivedID varchar(255))
 BEGIN
   SELECT
@@ -539,7 +539,7 @@ $$
 --
 -- Create procedure `proc_certificate_getAllIssued`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_certificate_getAllIssued (IN v_IssuerID varchar(255))
 BEGIN
   SELECT
@@ -579,7 +579,7 @@ $$
 --
 -- Create procedure `proc_certificate_delete`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_certificate_delete (IN v_CertificateID char(36))
 BEGIN
   UPDATE certificate c
@@ -591,7 +591,7 @@ $$
 --
 -- Create procedure `proc_certificate_ban`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_certificate_ban (IN v_CertificateID char(36))
 BEGIN
   UPDATE certificate c
@@ -603,7 +603,7 @@ $$
 --
 -- Create procedure `proc_Certificate_AddTransactionLink`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_Certificate_AddTransactionLink (IN v_CertificateIDs text, IN v_TransactionLink varchar(255))
 BEGIN
   UPDATE certificate
@@ -615,7 +615,7 @@ $$
 --
 -- Create procedure `proc_user_insert`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_user_insert (IN v_UserID varchar(255), IN v_UserName varchar(255), IN v_Logo varchar(255))
 COMMENT 'Procedure thêm mới 1 nguoi dung'
 BEGIN
@@ -640,7 +640,7 @@ $$
 --
 -- Create procedure `proc_user_delete`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_user_delete (IN v_UserID varchar(255))
 COMMENT 'Xóa 1 người dùng'
 BEGIN
@@ -653,7 +653,7 @@ $$
 --
 -- Create procedure `Proc_Certificate_SignMultiple`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE Proc_Certificate_SignMultiple (IN v_CertificateIDs text)
 BEGIN
   SET @v_CertificateIDs = REPLACE(v_CertificateIDs, ',', ''',''');
@@ -668,7 +668,7 @@ $$
 --
 -- Create procedure `Proc_Certificate_SendMultiple`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE Proc_Certificate_SendMultiple (IN v_CertificateIDs text)
 BEGIN
   SET @v_CertificateIDs = REPLACE(v_CertificateIDs, ',', ''',''');
@@ -683,7 +683,7 @@ $$
 --
 -- Create procedure `proc_certificate_DeleteMultiple`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_certificate_DeleteMultiple (IN v_CertificateIDs text)
 BEGIN
   SET @v_CertificateIDs = REPLACE(v_CertificateIDs, ',', ''',''');
@@ -698,7 +698,7 @@ $$
 --
 -- Create procedure `proc_certificate_BanMultiple`
 --
-CREATE DEFINER = 'sql12612725'@'%'
+CREATE DEFINER = 'sql12613779'@'%'
 PROCEDURE proc_certificate_BanMultiple (IN v_CertificateIDs text)
 BEGIN
   SET @v_CertificateIDs = REPLACE(v_CertificateIDs, ',', ''',''');

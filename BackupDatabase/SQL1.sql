@@ -11,6 +11,8 @@ SELECT * FROM user u;
 SELECT * FROM certificate c;
 SELECT * from contact c;
 
+UPDATE user u SET isverified = 1 WHERE u.UserCode ='100000'
+
 
 -- ==================Insert into user=======================
 -- tao truong
@@ -85,3 +87,18 @@ CALL proc_certificate_send('c28136f0-c5b4-11ed-ae9e-062bff1cb1bf');
 
 
 CALL proc_Certificate_AddTransactionLink('dd48bbba-c977-11ed-ae9e-062bff1cb1bf,dd21f684-c977-11ed-ae9e-062bff1cb1b','Test');
+
+
+SELECT * from certificate c
+
+CALL proc_certificate_signmultiple('a5121bd9-d4f9-11ed-ae9e-062bff1cb1bf,a4ee3fbd-d4f9-11ed-ae9e-062bff1cb1bf,a4ca85f1-d4f9-11ed-ae9e-062bff1cb1bf,a4a65aff-d4f9-11ed-ae9e-062bff1cb1bf,a481ba6f-d4f9-11ed-ae9e-062bff1cb1bf');
+CALL proc_certificate_sendmultiple('a5121bd9-d4f9-11ed-ae9e-062bff1cb1bf,a4ee3fbd-d4f9-11ed-ae9e-062bff1cb1bf,a4ca85f1-d4f9-11ed-ae9e-062bff1cb1bf,a4a65aff-d4f9-11ed-ae9e-062bff1cb1bf');
+CALL proc_certificate_banmultiple('a5121bd9-d4f9-11ed-ae9e-062bff1cb1bf,a4ee3fbd-d4f9-11ed-ae9e-062bff1cb1bf');
+
+
+CALL proc_contact_accept('a30e78c8-d4f9-11ed-ae9e-062bff1cb1bf'); 
+CALL proc_contact_accept('a334a345-d4f9-11ed-ae9e-062bff1cb1bf'); 
+CALL proc_contact_accept('a35a01e9-d4f9-11ed-ae9e-062bff1cb1bf'); 
+CALL proc_contact_accept('a37fb582-d4f9-11ed-ae9e-062bff1cb1bf'); 
+CALL proc_contact_accept('a3a5d08f-d4f9-11ed-ae9e-062bff1cb1bf'); 
+
