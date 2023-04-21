@@ -9,6 +9,11 @@ namespace NCKH.Blockchain.Team4.API.Library
 {
     public class DataFromDB
     {
+        /// <summary>
+        /// Cập nhật mã IPFS theo mã code
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="ipfs"></param>
         public static void UpdateIPFSCertByCode(int code, string ipfs)
         {
             using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
@@ -50,8 +55,8 @@ namespace NCKH.Blockchain.Team4.API.Library
             {
                 // execute the update query using Dapper's QueryFirstOrDefault method
                 int code = mySqlConnection.QueryFirstOrDefault<int>("select UserCode from user order by UserCode desc");
-                
-                return code > 1 ? code+1 : 100000;
+
+                return code > 1 ? code + 1 : 100000;
             }
         }
 
@@ -76,6 +81,31 @@ namespace NCKH.Blockchain.Team4.API.Library
 
                 // execute the update query using Dapper's QueryFirstOrDefault method
                 return mySqlConnection.QuerySingleOrDefault<Guid>("SELECT UserID FROM user WHERE AddressWallet = @AddressWallet", parameters);
+            }
+        }
+
+        public static string GetAssetNameByCertificateID(Guid certificateID)
+        {
+            using (var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString))
+            {
+                // create an anonymous object with the new IpfsLink and CertificateCode to update
+                var parameters = new { certificateID = certificateID };
+
+                // execute the query using Dapper's QueryFirstOrDefault method
+                var data = mySqlConnection.QueryFirstOrDefault("SELECT certificateCode, certificateType FROM certificate WHERE certificateID = @certificateID", parameters);
+
+                // check if data is not null
+                if (data != null)
+                {
+                    // concatenate certificateCode and certificateType with a separator of your choice
+                    string assetName = $"{data.certificateType}{data.certificateCode}";
+
+                    // return the concatenated string
+                    return assetName;
+                }
+
+                // return null if no data is found
+                return null;
             }
         }
     }

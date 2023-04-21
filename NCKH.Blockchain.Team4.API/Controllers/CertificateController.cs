@@ -5,6 +5,7 @@ using NCKH.Blockchain.Team4.API.Library;
 using NCKH.Blockchain.Team4.API.PinataAPI;
 using NCKH.Blockchain.Team4.Common.Constant;
 using NCKH.Blockchain.Team4.Common.Entities.DTO;
+using NCKH.Blockchain.Team4.Common.Library;
 using System.Drawing;
 using Image = System.Drawing.Image;
 
@@ -428,31 +429,33 @@ namespace NCKH.Blockchain.Team4.API.Controllers
             }
         }
 
-        [HttpPost("add-transaction-link")]
-        public IActionResult AddTransactionLinkCertificates([FromBody] TransactionLinkDTO transactionLink)
+        [HttpPost("update-after-sent")]
+        public IActionResult UpdateAfterSent([FromBody] UpdateAfterSentDTO update)
         {
             try
             {
                 var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
 
-                string storedProcedureName = DatabaseContext.CERTIFICATE_ADD_TRANSACTIONLINK;
+                string storedProcedureName = DatabaseContext.CERTIFICATE_ADD_UPDATEAFTERSENT;
 
                 //Xử lý string đầu vào proc về dạng "A,B,C"
-                string inputProc = String.Join(",", transactionLink.certificateIDs);
+                //string inputProc = String.Join(",", update.certificateIDs);
 
-                var parameters = new DynamicParameters();
-                parameters.Add("v_CertificateIDs", inputProc);
-                parameters.Add("v_TransactionLink", transactionLink.hash);
-
-                int countCertEffected = mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
-
-                if (countCertEffected > 0)
+                for (int i = 0; i < update.certificateIDs.Count; i++)
                 {
-                    return StatusCode(StatusCodes.Status200OK, transactionLink.certificateIDs);
+                    var assetName = DataFromDB.GetAssetNameByCertificateID(update.certificateIDs[i]);
+                    var assetID = update.policyID + ConvertData.TextToHex(assetName);
+
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("v_CertificateID", update.certificateIDs[i]);
+                    parameters.Add("v_TransactionLink", update.hash);
+                    parameters.Add("v_AssetID", assetID);
+
+                    mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
                 }
 
-                return StatusCode(StatusCodes.Status404NotFound);
-
+                return StatusCode(StatusCodes.Status200OK, update.certificateIDs);
             }
             catch(Exception e)
             {

@@ -42,7 +42,7 @@ namespace NCKH.Blockchain.Team4.Common.Constant
 
         public static string CERTIFICATE_DELETE_MULTIPLE = "proc_certificate_DeleteMultiple";
 
-        public static string CERTIFICATE_ADD_TRANSACTIONLINK = "proc_Certificate_AddTransactionLink";
+        public static string CERTIFICATE_ADD_UPDATEAFTERSENT = "proc_Certificate_UpdateAfterSent";
 
         public static string USER_INSERT = "Proc_User_Insert";
 
