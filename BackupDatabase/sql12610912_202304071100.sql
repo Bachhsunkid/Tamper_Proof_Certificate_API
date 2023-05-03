@@ -16,6 +16,8 @@
 -- 
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+CREATE DATABASE sql12613779
+
 -- 
 -- Set character set the client will use to send SQL statements to the server
 --
@@ -139,6 +141,8 @@ DROP TABLE IF EXISTS user;
 --
 -- Set default database
 --
+
+CREATE DATABASE sql12613779;
 USE sql12613779;
 
 --
