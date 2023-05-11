@@ -47,5 +47,7 @@ namespace NCKH.Blockchain.Team4.Common.Constant
         public static string USER_INSERT = "Proc_User_Insert";
 
         public static string USER_DELETE = "Proc_User_Delete";
+
+        public static string USER_UPDATE = "proc_user_update";
     }
 }

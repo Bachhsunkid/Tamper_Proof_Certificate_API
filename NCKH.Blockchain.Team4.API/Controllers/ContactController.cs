@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MySqlConnector;
 using NCKH.Blockchain.Team4.Common.Constant;
+using NCKH.Blockchain.Team4.Common.Entities;
 using NCKH.Blockchain.Team4.Common.Entities.DTO;
 
 namespace NCKH.Blockchain.Team4.API.Controllers
@@ -42,6 +43,8 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
+
+    
 
         /// <summary>
         /// Chấp nhận kết nối với 1 contact khác

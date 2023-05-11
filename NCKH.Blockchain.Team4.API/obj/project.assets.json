@@ -1381,19 +1381,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ADMIN\\.nuget\\packages\\": {}
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.API\\NCKH.Blockchain.Team4.API.csproj",
+      "projectUniqueName": "D:\\UTC di hoc\\NCKH\\Project\\Tamper_Proof_Certificate_API\\NCKH.Blockchain.Team4.API\\NCKH.Blockchain.Team4.API.csproj",
       "projectName": "NCKH.Blockchain.Team4.API",
-      "projectPath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.API\\NCKH.Blockchain.Team4.API.csproj",
-      "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.API\\obj\\",
+      "projectPath": "D:\\UTC di hoc\\NCKH\\Project\\Tamper_Proof_Certificate_API\\NCKH.Blockchain.Team4.API\\NCKH.Blockchain.Team4.API.csproj",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "D:\\UTC di hoc\\NCKH\\Project\\Tamper_Proof_Certificate_API\\NCKH.Blockchain.Team4.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1407,11 +1407,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.BL\\NCKH.Blockchain.Team4.BL.csproj": {
-              "projectPath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.BL\\NCKH.Blockchain.Team4.BL.csproj"
+            "D:\\UTC di hoc\\NCKH\\Project\\Tamper_Proof_Certificate_API\\NCKH.Blockchain.Team4.BL\\NCKH.Blockchain.Team4.BL.csproj": {
+              "projectPath": "D:\\UTC di hoc\\NCKH\\Project\\Tamper_Proof_Certificate_API\\NCKH.Blockchain.Team4.BL\\NCKH.Blockchain.Team4.BL.csproj"
             },
-            "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj": {
-              "projectPath": "D:\\UTC di hoc\\NCKH\\Project\\NCKH.Blockchain.Team4\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj"
+            "D:\\UTC di hoc\\NCKH\\Project\\Tamper_Proof_Certificate_API\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj": {
+              "projectPath": "D:\\UTC di hoc\\NCKH\\Project\\Tamper_Proof_Certificate_API\\NCKH.Blockchain.Team4.Common\\NCKH.Blockchain.Team4.Common.csproj"
             }
           }
         }
@@ -1470,7 +1470,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

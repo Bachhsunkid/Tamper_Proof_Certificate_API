@@ -57,6 +57,42 @@ namespace NCKH.Blockchain.Team4.API.Controllers
         }
 
         /// <summary>
+        /// Update user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        [HttpPost("update-user")]
+        public async Task<IActionResult> UpdateUser([FromForm] UserDTO user)
+        {
+            try
+            {
+                var imageUrl = await _cloudinaryService.UploadImageFromIFormFile(user.Logo);
+
+                var mySqlConnection = new MySqlConnection(DatabaseContext.ConnectionString);
+
+                string storedProcedureName = DatabaseContext.USER_UPDATE;
+
+                DynamicParameters parameters = new DynamicParameters();
+                parameters.Add("v_UserID", user.UserID);
+                parameters.Add("v_UserName", user.UserName);
+                parameters.Add("v_Logo", imageUrl);
+
+                mySqlConnection.Execute(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+
+                if (imageUrl != null)
+                {
+                    return StatusCode(StatusCodes.Status201Created);
+                }
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        /// <summary>
         /// Lấy thông số dashbroad theo PolicyID
         /// </summary>
         /// <param name="userId"></param>

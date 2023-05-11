@@ -22,3 +22,15 @@ D:\UTC di hoc\NCKH\Project\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.Common\ob
 D:\UTC di hoc\NCKH\Project\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\refint\NCKH.Blockchain.Team4.Common.dll
 D:\UTC di hoc\NCKH\Project\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.pdb
 D:\UTC di hoc\NCKH\Project\NCKH.Blockchain.Team4\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\ref\NCKH.Blockchain.Team4.Common.dll
+D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\bin\Debug\net6.0\NCKH.Blockchain.Team4.Common.deps.json
+D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\bin\Debug\net6.0\NCKH.Blockchain.Team4.Common.dll
+D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\bin\Debug\net6.0\NCKH.Blockchain.Team4.Common.pdb
+D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.csproj.AssemblyReference.cache
+D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.AssemblyInfoInputs.cache
+D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.AssemblyInfo.cs
+D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.csproj.CoreCompileInputs.cache
+D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.dll
+D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\refint\NCKH.Blockchain.Team4.Common.dll
+D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.pdb
+D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\ref\NCKH.Blockchain.Team4.Common.dll
