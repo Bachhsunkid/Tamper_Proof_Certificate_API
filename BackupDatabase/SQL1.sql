@@ -60,13 +60,15 @@ CALL proc_certificate_send('c54c7fd0-c31a-11ed-ae9e-062bff1cb1bf');
 
 
 -- dashboard nha truong
-CALL proc_dashboard_GetInfor('stake_test1uzjjsk25c6xc2ax57pvsvwdsncmta0nksfyvwdyq2ewlndqh9alfc', @v_Username, @v_Logo,@v_Pending, @v_Connected, @v_Draft, @v_Signed, @v_Sent,@v_Received);
-SELECT @v_Username, @v_Logo, @v_Pending, @v_Connected, @v_Draft, @v_Signed, @v_Sent, @v_Received;
+CALL proc_dashboard_GetInfor('stake_test1uzjjsk25c6xc2ax57pvsvwdsncmta0nksfyvwdyq2ewlndqh9alfc', @v_Username, @v_IsVerified,@v_Logo,@v_Pending, @v_Connected, @v_Draft, @v_Signed, @v_Sent, @v_Banned, @v_Received);
+SELECT @v_Username, @v_IsVerified, @v_Logo, @v_Pending, @v_Connected, @v_Draft, @v_Signed, @v_Sent, @v_Banned, @v_Received;
 
 -- dashbroad sinh vien
 CALL proc_dashboard_GetInfor('stake_test1uruq088hsj2jxxwgjhex6hkpfd2ap7jurhjnqhvfs8why2s0w4ltl', @v_Username, @v_Logo, @v_Pending, @v_Connected, @v_Draft, @v_Signed, @v_Sent,@v_Received);
 SELECT @v_Username, @v_Logo,@v_Pending, @v_Connected, @v_Draft, @v_Signed, @v_Sent, @v_Received;
 
+
+SELECT * FROM certificate c;
 
 CALL proc_Certificate_GetAllIssued('stake_test1uzjjsk25c6xc2ax57pvsvwdsncmta0nksfyvwdyq2ewlndqh9alfc');
 

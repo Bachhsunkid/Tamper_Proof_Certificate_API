@@ -15,6 +15,8 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
 
         public string TransactionLink { get; set; }
 
+        public string OrganizationName { get; set; }
+
         public string ReceivedIdentityNumber { get; set; }
 
         public DateTime ReceivedDoB { get; set; }

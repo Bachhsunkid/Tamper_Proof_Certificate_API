@@ -11,11 +11,11 @@ namespace NCKH.Blockchain.Team4.Common.Entities.DTO
     {
         public Guid ContactID { get; set; }
 
+        public int ContactCode { get; set; }
+
         public string IssuedID { get; set; }
 
         public string ReceivedID { get; set; }
-
-        public int ContactCode { get; set; }
 
         public string ContactName { get; set; }
 

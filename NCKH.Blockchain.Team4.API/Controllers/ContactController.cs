@@ -29,13 +29,13 @@ namespace NCKH.Blockchain.Team4.API.Controllers
                 var parameters = new DynamicParameters();
                 parameters.Add("v_UserID", UserID);
 
-                var certificateIssuedDTOs = mySqlConnection.Query<ContactDTO>(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
+                var contactDTOs = mySqlConnection.Query<ContactDTO>(storedProcedureName, parameters, commandType: System.Data.CommandType.StoredProcedure);
 
-                if (certificateIssuedDTOs != null)
+                if (contactDTOs != null)
                 {
-                    return StatusCode(StatusCodes.Status200OK, certificateIssuedDTOs);
+                    return StatusCode(StatusCodes.Status200OK, contactDTOs);
                 }
-                return StatusCode(StatusCodes.Status200OK, new List<CertificateIssuedDTO>());
+                return StatusCode(StatusCodes.Status200OK, new List<ContactDTO>());
             }
             catch (Exception e)
             {
