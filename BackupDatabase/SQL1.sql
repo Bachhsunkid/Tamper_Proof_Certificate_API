@@ -14,6 +14,17 @@ SELECT * from contact c;
 UPDATE user u SET isverified = 1 WHERE u.UserCode ='100000'
 
 
+CALL proc_user_insert('stake_test1upgyluuflvwk2kdjxlfzxgqrly3r72652aaa3sj0hdeqdyceq4f0h', 'Vu Truong Giang', 'https://res.cloudinary.com/dog4lwypp/image/upload/v1679064292/Logo/35999755-2230-4f91-a405-df5bec1c11f6.jpg');
+CALL proc_user_insert('stake_test1upvadt5zw4t5uw8tzzwl0xp5kaks0svzqg6hsfekhjl0fzs7k42ll', 'Tran Lam Lien', 'https://res.cloudinary.com/dog4lwypp/image/upload/v1679064292/Logo/35999755-2230-4f91-a405-df5bec1c11f6.jpg');
+CALL proc_user_insert('stake_test1upzlwwvcu2cfajnzdcvthqw7snp2w2vsp4yceqsph8rx8cqna2ker', 'Le Dinh Minh', 'https://res.cloudinary.com/dog4lwypp/image/upload/v1679064292/Logo/35999755-2230-4f91-a405-df5bec1c11f6.jpg');
+CALL proc_user_insert('stake_test1uqmw4ydawakkjwasf94w5f5frcrkt3t56taafgydh2wdkwqw3nks3', 'Bach 2', 'https://res.cloudinary.com/dog4lwypp/image/upload/v1679064292/Logo/35999755-2230-4f91-a405-df5bec1c11f6.jpg');
+CALL proc_user_insert('stake_test1uqmw4ydawakkjwasf94w5f5frcrkt3t56taafgydh2wdkwqw3nksu', 'Trinh Xuan Bach', 'https://res.cloudinary.com/dog4lwypp/image/upload/v1679064292/Logo/35999755-2230-4f91-a405-df5bec1c11f6.jpg');
+CALL proc_user_insert('stake_test1uqxvy9ntkxa9qe8t6f0phv4casn200w9zt4mcafutzu6jecgymvrs', 'Hiep Tran', 'https://res.cloudinary.com/dog4lwypp/image/upload/v1684684460/Logo/cedc80c2-ce96-4648-a416-d79ab5cf5db9.jpg');
+CALL proc_user_insert('stake_test1uruq088hsj2jxxwgjhex6hkpfd2ap7jurhjnqhvfs8why2s0w4ltl', 'Tran Huy Hiep', 'https://res.cloudinary.com/dog4lwypp/image/upload/v1679064292/Logo/35999755-2230-4f91-a405-df5bec1c11f6.jpg');
+CALL proc_user_insert('stake_test1urxp3zmykdlgh8vyldgkj5ltfwmvgw42l4g7m2ymc4a7hhg5rwegj', 'Dinh Minh', 'https://res.cloudinary.com/dog4lwypp/image/upload/v1684686005/Logo/92139c88-f073-4ed2-af00-dc504e1d3a6d.jpg');
+CALL proc_user_insert('stake_test1uzjjsk25c6xc2ax57pvsvwdsncmta0nksfyvwdyq2ewlndqh9alfc', 'University of Transport and Communications', 'https://res.cloudinary.com/dog4lwypp/image/upload/v1679067306/Logo/f513d3d1-faa5-404d-a3ae-08221608e764.jpg');
+
+
 -- ==================Insert into user=======================
 -- tao truong
 CALL proc_user_insert('stake_test1uzjjsk25c6xc2ax57pvsvwdsncmta0nksfyvwdyq2ewlndqh9alfc', 'University of Transport and Communications', 'https://res.cloudinary.com/dog4lwypp/image/upload/v1679067306/Logo/f513d3d1-faa5-404d-a3ae-08221608e764.jpg');
