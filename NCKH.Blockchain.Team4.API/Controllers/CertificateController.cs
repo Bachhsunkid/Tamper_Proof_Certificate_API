@@ -7,7 +7,6 @@ using NCKH.Blockchain.Team4.Common.Constant;
 using NCKH.Blockchain.Team4.Common.Entities.DTO;
 using NCKH.Blockchain.Team4.Common.Library;
 using System.Drawing;
-using Image = System.Drawing.Image;
 
 namespace NCKH.Blockchain.Team4.API.Controllers
 {

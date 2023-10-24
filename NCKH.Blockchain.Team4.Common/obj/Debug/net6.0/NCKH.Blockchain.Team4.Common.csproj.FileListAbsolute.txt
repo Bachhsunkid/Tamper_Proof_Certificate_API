@@ -34,3 +34,15 @@ D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Co
 D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\refint\NCKH.Blockchain.Team4.Common.dll
 D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.pdb
 D:\UTC di hoc\NCKH\Project\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\ref\NCKH.Blockchain.Team4.Common.dll
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.csproj.AssemblyReference.cache
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.AssemblyInfoInputs.cache
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.AssemblyInfo.cs
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.csproj.CoreCompileInputs.cache
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.dll
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\refint\NCKH.Blockchain.Team4.Common.dll
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\NCKH.Blockchain.Team4.Common.pdb
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\bin\Debug\net6.0\NCKH.Blockchain.Team4.Common.deps.json
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\bin\Debug\net6.0\NCKH.Blockchain.Team4.Common.dll
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\bin\Debug\net6.0\NCKH.Blockchain.Team4.Common.pdb
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.Common\obj\Debug\net6.0\ref\NCKH.Blockchain.Team4.Common.dll

@@ -16,10 +16,10 @@ namespace NCKH.Blockchain.Team4.API.Library
             var code = DataFromDB.GetMaxCertificateCode() - certs.Count;
 
             //Create folder contain image cert
-            ImageFolderPath = @"..\NCKH.Blockchain.Team4.BL\DegreeCreated\Degree_" + code;
+            ImageFolderPath = @"NCKH.Blockchain.Team4.BL\DegreeCreated\Degree_" + code;
             if (!Directory.Exists(ImageFolderPath))
                 Directory.CreateDirectory(ImageFolderPath);
-            BackgroundImagePath = @"..\NCKH.Blockchain.Team4.BL\DegreeForm\TestForm.png";
+            BackgroundImagePath = @"NCKH.Blockchain.Team4.BL\DegreeForm\TestForm.png";
 
 
             Bitmap image = new Bitmap(928, 648);
