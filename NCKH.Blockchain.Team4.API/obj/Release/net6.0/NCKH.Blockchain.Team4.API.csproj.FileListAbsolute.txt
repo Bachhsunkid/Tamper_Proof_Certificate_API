@@ -152,3 +152,11 @@ D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.API\o
 D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.API\obj\Release\net6.0\NCKH.Blockchain.Team4.API.pdb
 D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.API\obj\Release\net6.0\NCKH.Blockchain.Team4.API.genruntimeconfig.cache
 D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.API\obj\Release\net6.0\ref\NCKH.Blockchain.Team4.API.dll
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.API\bin\Release\net6.0\Amazon.Lambda.APIGatewayEvents.dll
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.API\bin\Release\net6.0\Amazon.Lambda.ApplicationLoadBalancerEvents.dll
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.API\bin\Release\net6.0\Amazon.Lambda.AspNetCoreServer.dll
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.API\bin\Release\net6.0\Amazon.Lambda.AspNetCoreServer.Hosting.dll
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.API\bin\Release\net6.0\Amazon.Lambda.Core.dll
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.API\bin\Release\net6.0\Amazon.Lambda.Logging.AspNetCore.dll
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.API\bin\Release\net6.0\Amazon.Lambda.RuntimeSupport.dll
+D:\P_UTCert\Eureka\Code\Tamper_Proof_Certificate_API\NCKH.Blockchain.Team4.API\bin\Release\net6.0\Amazon.Lambda.Serialization.SystemTextJson.dll

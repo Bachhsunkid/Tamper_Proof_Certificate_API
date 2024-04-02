@@ -25,6 +25,12 @@ namespace NCKH.Blockchain.Team4.API.Controllers
             _cloudinaryService = cloudinaryService;
         }
 
+        [HttpGet("test")]
+        public async Task<string> Test()
+        {
+            return "heello";
+        }
+
         [HttpPost("add-user")]
         public async Task<IActionResult> CreateUser([FromForm] UserDTO user)
         {
